@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 // Route::post('/', function () {
@@ -125,16 +126,28 @@ Route::get('/user/{username}/{age?}/abc/eee/rrr', function ($username, $age = nu
     return 'Welcomed ' . $username;
 })->whereAlpha('username')->whereNumber('age')->name('user');
 
-Route::get('/', function () {
-    // $url = '/user/ali/18/welcome';
-    $url = route('user', ['ali', 20]);
-    return "<a href='$url'>Go to Page</a>";
-});
+// Route::get('/', function () {
+//     // $url = '/user/ali/18/welcome';
+//     $url = route('user', ['ali', 20]);
+//     return "<a href='$url'>Go to Page</a>";
+// });
 
-Route::get('/post/{id}', function ($id) {
-    return "Show Post Number #$id";
-})->whereNumber('id')->name('post.show');
+// Route::get('/post/{id}', function ($id) {
+//     return "Show Post Number #$id";
+// })->whereNumber('id')->name('post.show');
 
-Route::get('/', function () {
-    return 'Welcome to the homepage!';
-})->name('home.index');
+// Route::get('/', function () {
+//     return 'Welcome to the homepage!';
+// })->name('home.index');
+
+
+// Final Route
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/team', [HomeController::class, 'team'])->name('team');
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/courses/{name?}', [HomeController::class, 'courses'])->name('courses')->whereAlphaNumeric('name');
+
+// $name = "ali";
+// echo $name;

@@ -1,13 +1,10 @@
 <?php
 
+use App\Http\Controllers\Teacher\TeacherController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('teacher', function () {
-    return "Teacher Page";
-})->name('teacher.index');
-Route::get('teacher/marks', function () {
-    return "Teacher marks Page";
-})->name('teacher.posts');
-Route::get('teacher/avg', function () {
-    return "Teacher avg Page";
-})->name('teacher.avg');
+Route::prefix('teacher')->name('teacher.')->controller(TeacherController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/marks', 'marks')->name('marks');
+    Route::get('/avg', 'avg')->name('avg');
+});
