@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Site1Controller;
 use Illuminate\Support\Facades\Route;
 
 // Route::post('/', function () {
@@ -151,3 +152,15 @@ Route::get('/courses/{name?}', [HomeController::class, 'courses'])->name('course
 
 // $name = "ali";
 // echo $name;
+
+// site1
+// site1/about
+// site1/contact
+Route::prefix('site1')->name('site1.')->group(function () {
+    Route::get('/', [Site1Controller::class, 'index'])->name('index');
+    Route::get('/about', [Site1Controller::class, 'about'])->name('about');
+    Route::get('/contact', [Site1Controller::class, 'contact'])->name('contact');
+    Route::post('/contact', [Site1Controller::class, 'contact_data']);
+    Route::get('{teacher}/students/', [Site1Controller::class, 'students'])->name('students');
+    Route::get('/{name}/{age?}', [Site1Controller::class, 'user'])->name('user');
+});
