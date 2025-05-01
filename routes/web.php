@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CreativeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\Site1Controller;
 use Illuminate\Support\Facades\Route;
 
@@ -163,4 +165,21 @@ Route::prefix('site1')->name('site1.')->group(function () {
     Route::post('/contact', [Site1Controller::class, 'contact_data']);
     Route::get('{teacher}/students/', [Site1Controller::class, 'students'])->name('students');
     Route::get('/{name}/{age?}', [Site1Controller::class, 'user'])->name('user');
+});
+
+
+Route::prefix('creative')->name('creative.')->group(function () {
+    Route::get('/', [CreativeController::class, 'index'])->name('index');
+    Route::get('/about', [CreativeController::class, 'about'])->name('about');
+    Route::get('/services', [CreativeController::class, 'services'])->name('services');
+    Route::get('/portfolio', [CreativeController::class, 'portfolio'])->name('portfolio');
+    Route::get('/contact', [CreativeController::class, 'contact'])->name('contact');
+});
+
+
+Route::prefix('personal')->name('personal.')->group(function () {
+    Route::get('/', [PersonalController::class, 'index'])->name('index');
+    Route::get('/contact', [PersonalController::class, 'contact'])->name('contact');
+    Route::get('/projects', [PersonalController::class, 'projects'])->name('projects');
+    Route::get('/resume', [PersonalController::class, 'resume'])->name('resume');
 });
