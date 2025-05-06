@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\CreativeController;
+use App\Http\Controllers\FormsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\Site1Controller;
@@ -183,3 +186,13 @@ Route::prefix('personal')->name('personal.')->group(function () {
     Route::get('/projects', [PersonalController::class, 'projects'])->name('projects');
     Route::get('/resume', [PersonalController::class, 'resume'])->name('resume');
 });
+
+Route::get('component', [ComponentController::class, 'index']);
+Route::get('agency', [AgencyController::class, 'index']);
+
+// Forms Route
+Route::get('/form1', [FormsController::class, 'form1'])->name('forms.form1');
+Route::post('/form1', [FormsController::class, 'form1_data']);
+
+Route::get('/form2', [FormsController::class, 'form2'])->name('forms.form2');
+Route::post('/form2', [FormsController::class, 'form2_data']);

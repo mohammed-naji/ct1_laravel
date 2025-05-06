@@ -8,7 +8,35 @@ class CreativeController extends Controller
 {
     function index()
     {
-        return view('creative.index');
+        $title = "Our Services - new";
+        $features = [
+            [
+                'id' => 1,
+                'title' => "Open SSL",
+                'price' => "Free"
+            ],
+            [
+                'id' => 2,
+                'title' => "Shared Hosting",
+                'price' => "10$"
+            ],
+            [
+                'id' => 3,
+                'title' => "VPS Hosting",
+                'price' => "50$"
+            ],
+            [
+                'id' => 4,
+                'title' => "Dedicated Server",
+                'price' => "1200$"
+            ],
+            [
+                'id' => 5,
+                'title' => "Free Emails",
+                'price' => "Free"
+            ],
+        ];
+        return view('creative.index', compact('title', 'features'));
     }
 
     function about()

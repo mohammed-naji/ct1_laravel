@@ -34,43 +34,36 @@
             </div>
         </div>
     </section>
-    <!-- Services-->
-    <section class="page-section" id="services">
+    <!-- Features-->
+    <section class="page-section" id="features">
         <div class="container px-4 px-lg-5">
-            <h2 class="text-center mt-0">At Your Service</h2>
+            <h2 class="text-center mt-0">Our Features</h2>
             <hr class="divider" />
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="mt-5">
-                        <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
-                        <h3 class="h4 mb-2">Sturdy Themes</h3>
-                        <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="mt-5">
-                        <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
-                        <h3 class="h4 mb-2">Up to Date</h3>
-                        <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="mt-5">
-                        <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
-                        <h3 class="h4 mb-2">Ready to Publish</h3>
-                        <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="mt-5">
-                        <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
-                        <h3 class="h4 mb-2">Made with Love</h3>
-                        <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
-                    </div>
-                </div>
-            </div>
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($features as $feature)
+                        <tr class="{{ $loop->last ? 'table-info' : '' }}">
+                            {{-- <td>@dump($loop)</td> --}}
+                            <td>{{ $loop->iteration }}</td>
+                            <td>ddd</td>
+                            <td>10$</td>
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+
         </div>
     </section>
+    <!-- Services-->
+    @include('creative._services')
     <!-- Portfolio-->
     <div id="portfolio">
         <div class="container-fluid p-0">
@@ -112,7 +105,8 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="{{ asset('assets/img/portfolio/fullsize/5.jpg') }}" title="Project Name">
+                    <a class="portfolio-box" href="{{ asset('assets/img/portfolio/fullsize/5.jpg') }}"
+                        title="Project Name">
                         <img class="img-fluid" src="{{ asset('assets/img/portfolio/thumbnails/5.jpg') }}" alt="..." />
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">Category</div>
@@ -123,8 +117,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <a class="portfolio-box" href="{{ asset('assets/img/portfolio/fullsize/6.jpg') }}"
                         title="Project Name">
-                        <img class="img-fluid" src="{{ asset('assets/img/portfolio/thumbnails/6.jpg') }}"
-                            alt="..." />
+                        <img class="img-fluid" src="{{ asset('assets/img/portfolio/thumbnails/6.jpg') }}" alt="..." />
                         <div class="portfolio-box-caption p-3">
                             <div class="project-category text-white-50">Category</div>
                             <div class="project-name">Project Name</div>
