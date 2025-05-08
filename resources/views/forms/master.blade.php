@@ -16,6 +16,7 @@
     </div>
 
     <script src="{{ asset('formsassets/js/bootstrap.bundle.min.js') }}"></script>
+    @yield('js')
 </body>
 
 </html>

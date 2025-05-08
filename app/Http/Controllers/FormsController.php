@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Form3Request;
 use Illuminate\Http\Request;
 
 class FormsController extends Controller
@@ -40,5 +41,33 @@ class FormsController extends Controller
     function form2_data(Request $request)
     {
         dd($request->except('_token'));
+    }
+
+    function form3()
+    {
+        return view('forms.form3');
+    }
+
+    function form3_data(Form3Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:3|max:20',
+            'email' => 'required|email',
+            // 'age' => 'required|numeric',
+            'age' => ['required', 'numeric'],
+        ]);
+        dd($request->all());
+        // $name = $request->name;
+        // $email = $request->email;
+        // $age = $request->age;
+
+        // $errors = [];
+        // if(isset($name)) {
+        //     $errors[] = 'الاسم مطلوب';
+        // }
+
+        // if(strlen($name) > 20) {
+        //     $errors[] = 'حقل الاسم يجب ان يكون اقل من 20 حرف';
+        // }
     }
 }
