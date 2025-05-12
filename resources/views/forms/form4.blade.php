@@ -1,26 +1,31 @@
 @extends('forms.master')
-@section('title', 'Form 3')
+@section('title', 'Form 4')
 @section('content')
-    <h1>Third Form</h1>
-    {{-- @dump($errors)
-    @dump($errors->any())
-    @dump($errors->all()) --}}
-
-    {{-- @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif --}}
-
-    <form action="{{ route('forms.form3') }}" method="post">
+    <h1>Contact Us</h1>
+    <form action="{{ route('forms.form4') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <x-form.input name="name" placeholder="Name.." />
-        <x-form.input name="email" placeholder="Email.." type="email" />
-        {{-- <x-form.input name="age" type="number" placeholder="Age.." /> --}}
+        <div class="row">
+            <div class="col-md-6">
+                <x-form.input name="name" placeholder="Name.." />
+            </div>
+            <div class="col-md-6">
+                <x-form.input name="email" placeholder="Email.." type="email" />
+            </div>
+            <div class="col-md-6">
+                <x-form.input name="phone" placeholder="Phone.." />
+            </div>
+            <div class="col-md-6">
+                <x-form.input name="subject" placeholder="Subject.." />
+            </div>
+            <div class="col-md-12">
+                <x-form.input type="file" name="media" label="Invoice File" />
+            </div>
+            <div class="col-md-12">
+                <x-form.textarea name="message" placeholder="Subject.." />
+            </div>
+        </div>
+
+
         <button class="btn btn-success px-5">Send</button>
     </form>
 @stop
