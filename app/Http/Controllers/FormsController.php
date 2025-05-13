@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Form3Request;
+use App\Mail\ContactUsMail;
 use App\Mail\TestMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -92,6 +93,8 @@ class FormsController extends Controller
             'message' => 'required'
         ]);
 
+
+
         // dd($request->all());
         // $path = $request->file('media')->store('uploads'); // storage/private/uploads
         // $path = $request->file('media')->store('uploads', 'custom'); // storage/public/uploads , php artisan storage:link
@@ -111,10 +114,12 @@ class FormsController extends Controller
         // 2. store files
 
         // 3. save in database
-
+        $data = $request->except('_token', 'media');
+        $data['media'] = $path;
+        // dd($data);
         // 4. redirect to view
 
-
-        Mail::to('admin@gmail.com')->send(new TestMail());
+        // Mail::to('admin@gmail.com')->send(new TestMail());
+        Mail::to('malqumbuz@gmail.com')->send(new ContactUsMail($data));
     }
 }
