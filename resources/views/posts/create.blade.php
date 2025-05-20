@@ -22,7 +22,6 @@
             <x-form.input name="image" type="file" label="Image" />
             <x-form.textarea name="content" label="Content" placeholder="Post content.." />
             <button class="btn btn-success px-4"><i class="fas fa-save"></i> Save</button>
-
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
