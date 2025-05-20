@@ -6,6 +6,7 @@ use App\Http\Controllers\CreativeController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Site1Controller;
 use Illuminate\Support\Facades\Route;
 
@@ -202,3 +203,10 @@ Route::post('/form3', [FormsController::class, 'form3_data']);
 
 Route::get('/form4', [FormsController::class, 'form4'])->name('forms.form4');
 Route::post('/form4', [FormsController::class, 'form4_data']);
+
+
+// posts route
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('posts', [PostController::class, 'store'])->name('posts.store');
