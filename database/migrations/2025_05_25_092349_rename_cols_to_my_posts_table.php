@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('my_posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->string('image')->default('uploads/no-image-available.webp');
-            $table->timestamps();
+        Schema::table('my_posts', function (Blueprint $table) {
+            $table->renameColumn('content', 'description');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('my_posts');
+        Schema::table('my_posts', function (Blueprint $table) {
+            $table->renameColumn('description', 'content');
+        });
     }
 };

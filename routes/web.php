@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Site1Controller;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 // Route::post('/', function () {
@@ -206,9 +207,17 @@ Route::post('/form4', [FormsController::class, 'form4_data']);
 
 
 // posts route
-Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+// Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 
-Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('posts', [PostController::class, 'store'])->name('posts.store');
+// Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+// Route::post('posts', [PostController::class, 'store'])->name('posts.store');
 
-Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
+// Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+// Route::delete('posts/{post}/destroy', [PostController::class, 'destroy'])->name('posts.destroy');
+
+// Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+// Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+
+Route::resource('posts', PostController::class);
+Route::resource('tags', TagController::class);

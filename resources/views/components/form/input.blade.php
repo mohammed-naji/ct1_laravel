@@ -11,4 +11,10 @@
     @error($name)
         <small class="text-danger">{{ $message }}</small>
     @enderror
+
+    @if ($type == 'file' && $value)
+        <div>
+            <img class="img-thumbnail mt-1" width="120" src="{{ asset($value) }}" alt="">
+        </div>
+    @endif
 </div>
