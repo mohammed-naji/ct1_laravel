@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\CreativeController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RelationController;
 use App\Http\Controllers\Site1Controller;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
@@ -220,4 +222,9 @@ Route::post('/form4', [FormsController::class, 'form4_data']);
 // Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 
 Route::resource('posts', PostController::class);
-Route::resource('tags', TagController::class);
+// Route::resource('tags', TagController::class);
+
+// Categories Routes
+Route::resource('categories', CategoryController::class);
+
+Route::get('/user/{id}', [RelationController::class, 'user']);
