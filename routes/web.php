@@ -222,9 +222,12 @@ Route::post('/form4', [FormsController::class, 'form4_data']);
 // Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 
 Route::resource('posts', PostController::class);
+Route::post('/posts/{post}/comment', [PostController::class, 'comment'])->name('posts.comment');
 // Route::resource('tags', TagController::class);
 
 // Categories Routes
 Route::resource('categories', CategoryController::class);
 
 Route::get('/user/{id}', [RelationController::class, 'user']);
+Route::get('/profile/{profile}', [RelationController::class, 'profile']);
+Route::get('/users', [RelationController::class, 'users']);

@@ -16,9 +16,28 @@
 
         <img class="w-50" src="{{ asset($post->image) }}" alt="">
 
-        <div class="my-5">
+        <div class="my-3">
             {{ $post->content }}
         </div>
+
+        <hr>
+        <div class="text-start w-75 mx-auto">
+            <h3>Comments ({{ $post->comments->count() }})</h3>
+            @foreach ($post->comments as $comment)
+                <b>{{ $comment->user->name }}</b> - <small>{{ $comment->created_at->diffForHumans() }}</small>
+                <p>{{ $comment->comment }}</p>
+            @endforeach
+
+            <br>
+            <br>
+            <h4>Add new Comment</h4>
+            <form action="{{ route('posts.comment', $post) }}" method="post">
+                @csrf
+                <x-form.textarea name="comment" placeholder="Comment here.." rows="3" />
+                <button class="btn btn-success">Place Comment</button>
+            </form>
+        </div>
+
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>

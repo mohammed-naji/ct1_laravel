@@ -46,8 +46,21 @@ class User extends Authenticatable
         ];
     }
 
+    // forward relation
     function profile()
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(Profile::class)->withDefault([
+            'fb' => 'mohdddddd'
+        ]);
+    }
+
+    function getMyEmailAttribute()
+    {
+        return "Email: " . $this->email;
     }
 }
+
+// snake_case
+// camelCase
+// PascalCase
+// kebab-case

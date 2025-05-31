@@ -26,4 +26,9 @@ class Post extends Model
 
         return $src;
     }
+
+    function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

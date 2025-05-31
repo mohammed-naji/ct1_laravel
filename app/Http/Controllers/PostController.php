@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Contracts\View\View as ViewView;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
@@ -99,6 +101,9 @@ class PostController extends Controller
 
     function show(Post $post)
     {
+        // lazy load
+        // $post->load('comments.user');
+        // dd($post->comments);
         // id = 30
         // select * from my_posts where id = 6
         // $post = Post::findOrFail($id);
@@ -154,4 +159,26 @@ class PostController extends Controller
             ->with('msg', 'Post updated successfully')
             ->with('type', 'warning');
     }
+
+    function comment(Request $request, Post $post)
+    {
+        $user_id = 7;
+        // dd($request->all());
+        // Comment::create([
+        //     'user_id' => $user_id,
+        //     'post_id' => $post->id,
+        //     'comment' => $request->comment
+        // ]);
+        $post->comments()->create([
+            'user_id' => $user_id,
+            'comment' => $request->comment
+        ]);
+
+        return redirect()->back();
+    }
 }
+
+// hasOne
+// belongsTo
+// hasMany
+// belongsToMany
